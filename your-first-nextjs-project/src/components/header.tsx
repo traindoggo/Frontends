@@ -19,7 +19,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="flex justify-between items-center py-4 px-7 border-b">
+    <header className="flex justify-between items-center py-4 px-7 border-neutral-900 border-b-2">
       <Link href="/">
         <Image
           src="https:/bytegrad.com/course-assets/youtube/example-logo.png"

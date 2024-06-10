@@ -14,13 +14,11 @@ export default async function page() {
       <h1 className="text-4xl md:text-5xl font-bold mb-5">All Posts</h1>
 
       <ul>
-        <li>
-          {data.posts.map((post) => (
-            <li key={post.id} className="mb-3">
-              <Link href={`/posts/${post.id}`}>{post.title}</Link>
-            </li>
-          ))}
-        </li>
+        {data.posts.map((post) => (
+          <li key={post.id} className="mb-3">
+            <Link href={`/posts/${post.id}`}>{post.title}</Link>
+          </li>
+        ))}
       </ul>
     </main>
   );

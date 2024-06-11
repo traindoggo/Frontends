@@ -7,7 +7,7 @@
 ## In progress...
 
 - [your first next js project](https://www.youtube.com/watch?v=y7JCnfbETPs)
-  - 50:00: Suspense and Streaming (loading.tsx)
+  - 1:14:29: with Kinde, add login state
 
 ## Done :^)
 

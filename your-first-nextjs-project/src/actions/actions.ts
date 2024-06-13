@@ -3,6 +3,7 @@
 "use server";
 
 import prisma from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 export async function createPost(formData: FormData) {
   // typically don't want to do this 'type conversion' in typescript
@@ -17,4 +18,7 @@ export async function createPost(formData: FormData) {
       body: body,
     },
   });
+
+  // revalidate for slapping caching
+  revalidatePath("/post");
 }

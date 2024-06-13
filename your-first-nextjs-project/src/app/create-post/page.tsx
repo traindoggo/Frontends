@@ -7,12 +7,23 @@ export default async function Page() {
     <main className="text-center p-16">
       <h1 className="text-4xl md:text-5xl font-bold mb-5">All Posts</h1>
 
-      <form action={createPost} className="h-10 space-x-2 mt-10">
+      <form
+        action={createPost}
+        className="flex flex-col max-w-[400px] mx-auto gap-2 my-10 text-neutral-900"
+      >
         <input
           type="text"
           name="title"
           placeholder="Title for new post"
-          className="border rounded px-3 h-full text-neutral-900"
+          className="border rounded px-2 h-10"
+          required
+        />
+
+        <textarea
+          name="body"
+          placeholder="Body content for new post"
+          className="border rounded px-2 py-2 h-full"
+          rows={6}
           required
         />
 

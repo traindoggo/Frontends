@@ -1,9 +1,11 @@
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/styles/globals.css";
 import Container from "./components/container";
-import Header from "./components/header";
 import Footer from "./components/footer";
+import Header from "./components/header";
+import Inner from "./components/inner";
+import Sidebar from "./components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-neutral-900 text-neutral-200 min-h-screen text-center`}
+        className={`${inter.className} bg-neutral-950 text-neutral-200 min-h-screen text-center`}
       >
         <Container>
           <Header />
-          {children}
+          <Inner>
+            <Sidebar />
+            {children}
+          </Inner>
           <Footer />
         </Container>
       </body>

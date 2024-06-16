@@ -5,6 +5,7 @@ import Container from "./components/container";
 import Footer from "./components/footer";
 import Header from "./components/header";
 import Inner from "./components/inner";
+import Main from "./components/main";
 import Sidebar from "./components/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,7 +30,7 @@ export default function RootLayout({
           <Header />
           <Inner>
             <Sidebar />
-            {children}
+            <Main>{children}</Main>
           </Inner>
           <Footer />
         </Container>

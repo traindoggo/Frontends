@@ -2,7 +2,7 @@
 
 import { updateTodo } from "@/actions/actions";
 import { useForm } from "react-hook-form";
-import { TTodoSchema } from "../lib/types";
+import { TTodoSchema } from "../../lib/types";
 
 export default function UpdateTodo({ todo }: { todo: TTodoSchema }) {
   // react-hook-form

@@ -18,6 +18,14 @@ export default function Header() {
       >
         ReactHookForm
       </Link>
+
+      <Link
+        href="/rhf_zod"
+        className={`hover:bg-neutral-900 hover:text-neutral-200
+        text-xl px-2 rounded duration-100`}
+      >
+        ReactHookForm+Zod
+      </Link>
     </header>
   );
 }

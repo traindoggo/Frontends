@@ -1,6 +1,6 @@
 "use server";
 
-import { TTodoSchema } from "@/app/lib/types";
+import { TTodoSchema, todoIdSchema } from "@/app/lib/types";
 import prisma from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
@@ -28,4 +28,25 @@ export async function updateTodo(todoData: TTodoSchema) {
   });
 
   revalidatePath(`/todo/${todoData.id}`);
+}
+
+export async function doneTodo(formData: FormData) {
+  const validatedTodoId = todoIdSchema.safeParse({
+    id: formData.get("id"),
+  });
+
+  if (!validatedTodoId.success) {
+    return;
+  }
+
+  await prisma.todo.update({
+    where: {
+      id: validatedTodoId.data.id,
+    },
+    data: {
+      done: true,
+    },
+  });
+
+  revalidatePath("/");
 }

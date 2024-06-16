@@ -10,3 +10,7 @@ export const todoSchema = z.object({
 });
 
 export type TTodoSchema = z.infer<typeof todoSchema>;
+
+export const todoIdSchema = z.object({
+  id: z.coerce.number(),
+});

@@ -1,4 +1,5 @@
 import prisma from "@/lib/db";
+import Link from "next/link";
 
 export default async function TodoList() {
   const todos = await prisma.todo.findMany();
@@ -8,7 +9,7 @@ export default async function TodoList() {
       <ul className="flex flex-col gap-4">
         {todos.map((todo) => (
           <li key={todo.id} className="border-b">
-            {todo.body}
+            <Link href={`/todo/${todo.id}`}>{todo.body}</Link>
           </li>
         ))}
       </ul>

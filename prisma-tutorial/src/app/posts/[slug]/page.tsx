@@ -1,9 +1,9 @@
 import { prisma } from "@/lib/prisma";
 
-export default async function Post({ params }: { params: { id: string } }) {
+export default async function Post({ params }: { params: { slug: string } }) {
   const post = await prisma.post.findUnique({
     where: {
-      id: params.id,
+      slug: params.slug,
     },
   });
   return (

@@ -13,6 +13,11 @@ export async function createPost(formData: FormData) {
         .replace(/s+/g, "-")
         .toLocaleLowerCase() as string,
       content: formData.get("content") as string,
+      author: {
+        connect: {
+          email: "john@gmail.com",
+        },
+      },
     },
   });
 

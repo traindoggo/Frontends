@@ -3,7 +3,7 @@
 import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
-export async function createPost(formData: FormData) {
+export async function createTask(formData: FormData) {
   // TODO: validation
   const title = formData.get("title") as string;
 

@@ -1,8 +1,8 @@
-import { createPost } from "@/actions/actions";
+import { createTask } from "@/actions/actions";
 
 export default function Form() {
   return (
-    <form action={createPost} className="flex gap-6">
+    <form action={createTask} className="flex gap-6">
       <input
         type="text"
         name="title"

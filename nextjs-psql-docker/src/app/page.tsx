@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import Link from "next/link";
 import Form from "./components/form";
 
 export default async function Home() {
@@ -13,14 +14,15 @@ export default async function Home() {
 
       <ul className="flex flex-col gap-4">
         {posts.map((post) => (
-          <li
+          <Link
             key={post.id}
+            href={`/posts/${post.id}`}
             className={`text-xl
             border-b-neutral-700 border-b-2 hover:border-b-neutral-300
             duration-200 hover:cursor-pointer`}
           >
             {post.title}
-          </li>
+          </Link>
         ))}
       </ul>
 

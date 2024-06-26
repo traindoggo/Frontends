@@ -28,6 +28,7 @@ export default async function Home() {
             <p className="flex gap-2">
               {tags.map((tag) => (
                 <span
+                  key={tag}
                   className={`px-1 border rounded
                   border-green-600 bg-green-600 text-black`}
                 >

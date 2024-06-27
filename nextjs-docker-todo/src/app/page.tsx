@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/db";
-
-const tags = ["Tag", "but", "not", "implementd"];
+import Link from "next/link";
 
 export default async function Home() {
   const blogs = await prisma.blog.findMany({});
@@ -8,37 +7,27 @@ export default async function Home() {
   return (
     <main className="flex-1 flex flex-col p-4 bg-neutral-950">
       <header className="text-center">
-        <h1 className="text-2xl">All Blogs</h1>
+        <h1 className="text-2xl">The Latest Blogs</h1>
       </header>
 
-      <div className="mt-6 px-32 card">
+      <ul className="flex flex-col gap-6 w-[500px] mt-10 mx-auto">
         {blogs.map((blog) => (
-          <div
+          <Link
             key={blog.id}
-            className={`flex flex-col gap-2
-            px-4 py-2 rounded
-            border border-neutral-500 hover:border-neutral-200
-            text-neutral-300 hover:text-neutral-100
-            duration-100`}
+            href={`/blogs/${blog.id}`}
+            className={`border rounded
+             border-neutral-500 hover:border-neutral-200`}
           >
-            <p className="text-2xl">{blog.title}</p>
-            <hr />
-            <p className="text-xl">{blog.content}</p>
-            {/* TODO: pretty ugly ... */}
-            <p className="flex gap-2">
-              {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className={`px-1 border rounded
-                  border-green-600 bg-green-600 text-black`}
-                >
-                  {tag}
-                </span>
-              ))}
-            </p>
-          </div>
+            <header className={`text-2xl px-2 py-1 text-center`}>
+              {blog.title}
+            </header>
+
+            <hr className={`border-neutral-500 hover:border-neutral-200`} />
+
+            <p className={`px-2 py-1`}>{blog.content}</p>
+          </Link>
         ))}
-      </div>
+      </ul>
     </main>
   );
 }

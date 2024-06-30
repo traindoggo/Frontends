@@ -1,16 +1,18 @@
 "use client";
 
 import { createPost } from "@/actions/actions";
-import { FieldValues, useForm } from "react-hook-form";
+import { TBlogSchema, blogSchema } from "@/lib/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
 export default function PostCreatePage() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<TBlogSchema>({
+    resolver: zodResolver(blogSchema),
+    // defaultValues: {},
+  });
 
-  const onSubmit = async (data: FieldValues) => {
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("content", data.content);
-    createPost(formData);
+  const onSubmit = async (data: TBlogSchema) => {
+    createPost(data);
   };
 
   return (
@@ -22,22 +24,23 @@ export default function PostCreatePage() {
         <input
           {...register("title")}
           type="text"
-          placeholder="Title"
-          className={`p-2 bg-neutral-900 rounded`}
+          placeholder="input..."
+          className={`p-2 bg-neutral-900 rounded outline-none
+            focus:bg-neutral-800`}
         />
         <textarea
           {...register("content")}
-          id="content"
-          placeholder="Content"
-          className={`h-full p-2 bg-neutral-900 rounded`}
+          placeholder="input..."
+          className={`h-full p-2 bg-neutral-900 rounded outline-none
+            focus:bg-neutral-800`}
         />
         <div>
           <button
             type="submit"
             className={`border px-2 rounded
-            text-black
+            text-black outline-none
             bg-green-900 border-green-900
-            hover:bg-green-500 duration-100`}
+            hover:bg-green-500 focus:bg-green-500 duration-100`}
           >
             Create
           </button>

@@ -10,13 +10,14 @@ export default async function Home() {
         <h1 className="text-2xl">The Latest Blogs</h1>
       </header>
 
-      <ul className="flex flex-col gap-6 w-[500px] mt-10 mx-auto">
+      <div className="grid grid-cols-2 gap-6 mt-10">
         {blogs.map((blog) => (
           <Link
             key={blog.id}
             href={`/blogs/${blog.id}`}
-            className={`border rounded
-             border-neutral-500 hover:border-neutral-200`}
+            className={`border-2 border-neutral-500 rounded
+             hover:border-neutral-200 hover:bg-neutral-900 hover:border-2
+             duration-100`}
           >
             <header className={`text-2xl px-2 py-1 text-center`}>
               {blog.title}
@@ -24,10 +25,18 @@ export default async function Home() {
 
             <hr className={`border-neutral-500 hover:border-neutral-200`} />
 
-            <p className={`px-2 py-1`}>{blog.content}</p>
+            <div className="px-6">
+              {/* TODO: truncate content string length */}
+              <p className={`px-2 py-1 text-xl`}>{blog.content}</p>
+
+              <footer className="px-2 py-1 text-neutral-600 text-sm mt-2">
+                <p>Created : {blog.createdAt.toLocaleDateString()}</p>
+                <p>Updated : {blog.updatedAt.toLocaleDateString()}</p>
+              </footer>
+            </div>
           </Link>
         ))}
-      </ul>
+      </div>
     </main>
   );
 }

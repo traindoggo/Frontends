@@ -7,7 +7,7 @@ const links = [
   },
   {
     title: "Create",
-    href: "/posts/create",
+    href: "/blogs/create",
   },
 ];
 

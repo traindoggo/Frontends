@@ -15,6 +15,7 @@ export default async function BlogPage({ params }: { params: { id: string } }) {
   return (
     <main className={`flex-1 flex flex-col`}>
       <div
+        key={blog.id}
         className={`flex-1 flex flex-col w-[900px] mx-auto
         bg-neutral-950`}
       >
